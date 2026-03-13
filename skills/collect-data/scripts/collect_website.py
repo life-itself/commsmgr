@@ -12,7 +12,7 @@ def main():
     args = parser.parse_args()
 
     try:
-        from trafilatura import sitemaps, fetch_url, extract
+        from trafilatura import sitemaps, fetch_url, bare_extraction
     except ImportError:
         print("trafilatura not installed. Run: pip install trafilatura")
         sys.exit(1)
@@ -45,29 +45,19 @@ def main():
             if not html:
                 continue
 
-            result = extract(html, output_format="python", with_metadata=True)
+            result = bare_extraction(html, with_metadata=True)
             if not result:
-                # Try raw extraction
-                text = extract(html)
-                if not text:
-                    continue
-                result = {"text": text}
+                continue
 
-            # extract with python format returns a dict when available,
-            # otherwise fall back to json parsing
-            if isinstance(result, str):
-                try:
-                    result = json.loads(extract(html, output_format="json", with_metadata=True) or "{}")
-                except (json.JSONDecodeError, TypeError):
-                    result = {"text": result}
-
+            text = result.text or ""
+            tags_raw = result.tags or ""
             entry = {
                 "platform": "website",
                 "content_type": "page",
-                "title": result.get("title", ""),
+                "title": result.title or "",
                 "url": url,
-                "published_date": result.get("date", ""),
-                "body_text": result.get("text", ""),
+                "published_date": result.date or "",
+                "body_text": text,
                 "metrics": {
                     "views": None,
                     "likes": None,
@@ -75,10 +65,10 @@ def main():
                     "shares": None,
                 },
                 "metadata": {
-                    "tags": result.get("tags", "").split(",") if result.get("tags") else [],
-                    "category": result.get("categories", ""),
-                    "word_count": len(result.get("text", "").split()) if result.get("text") else 0,
-                    "author": result.get("author", ""),
+                    "tags": tags_raw.split(",") if tags_raw else [],
+                    "category": result.categories or "",
+                    "word_count": len(text.split()) if text else 0,
+                    "author": result.author or "",
                 },
             }
             f.write(json.dumps(entry) + "\n")

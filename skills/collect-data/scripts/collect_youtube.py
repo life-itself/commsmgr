@@ -78,8 +78,10 @@ def main():
         youtube = None
 
     # Try to import transcript API
+    transcript_api = None
     try:
         from youtube_transcript_api import YouTubeTranscriptApi
+        transcript_api = YouTubeTranscriptApi()
         has_transcripts = True
     except ImportError:
         print("youtube-transcript-api not installed. Run: pip install youtube-transcript-api")
@@ -199,8 +201,8 @@ def main():
 
             if has_transcripts:
                 try:
-                    transcript = YouTubeTranscriptApi.get_transcript(vid)
-                    body_text = " ".join(entry["text"] for entry in transcript)
+                    transcript = transcript_api.fetch(vid)
+                    body_text = " ".join(snippet.text for snippet in transcript)
                     transcript_count += 1
                 except Exception:
                     no_transcript.append(vid)
