@@ -1,5 +1,38 @@
 # Communications Strategy Tool for Mission-Driven Organizations
 
+## Process Overview
+
+```
+                    Layer 0
+              ┌─────────────────┐
+              │  Org Context &  │
+              │     Intake      │
+              └────────┬────────┘
+                       │
+                       ▼
+                    Layer 1
+              ┌─────────────────┐
+              │  Social Media   │
+              │     Audit       │
+              └────────┬────────┘
+                       │
+            ┌──────────┼──────────┐
+            ▼          ▼          ▼
+         Layer 2    Layer 2b   Layer 2c
+       ┌─────────┐┌─────────┐┌─────────┐
+       │Benchmark-││  Brand  ││Strategy │
+       │  ing     ││  Audit  ││& Plan   │
+       └─────┬───┘└────┬────┘└────┬────┘
+             │         │          │
+             └─────────┼──────────┘
+                       ▼
+              ┌─────────────────┐
+              │  Final Output:  │
+              │ Strategy + Brand│
+              │ Recommendations │
+              └─────────────────┘
+```
+
 ## Vision
 
 An AI-assisted tool that develops **communications strategy for NGOs, mission-driven organizations, and public-interest initiatives**. The system moves from **understanding** an organization's current communications landscape, through **analysis and benchmarking**, to **strategic planning** — producing actionable quarterly communication plans tailored to the organization's mission, resources, and constraints.
@@ -8,7 +41,7 @@ The tool is oriented toward **external communications** — how the organization
 
 ## Layers
 
-The system is structured in four layers, each building on the previous:
+The system is structured in layers. Layers 0 and 1 are sequential. After Layer 1, three processes run in parallel: benchmarking (Layer 2), brand audit (Layer 2b), and strategy development (Layer 2c). All three feed into the final output.
 
 ### Layer 0: Organization Context & Intake
 
@@ -65,7 +98,23 @@ The tool performs the same audit on these peers and generates **comparative insi
 
 This provides context for interpreting the organization's own performance and answers: *How does our performance compare to peers with similar constraints? What strategic patterns or mistakes emerge from the data?*
 
-### Layer 3: Strategy & Communications Planning
+### Layer 2b: Brand Audit & Distillation
+
+Using the content gathered in Layer 1, the system distils the organization's **existing brand** as expressed across its communications. This includes:
+
+* **Narrative** — the core story the organization tells about itself, its mission, and its theory of change
+* **Tone of voice** — formal vs informal, academic vs accessible, urgent vs reflective, etc.
+* **Stylistic sense** — visual and verbal patterns, recurring language, framing choices
+
+The brand audit also includes an **optional critique**, which may surface two kinds of findings:
+
+1. **Inconsistency** — the brand is not coherent across platforms or over time. The audit distils the best approximation of the brand but flags where messaging, tone, or framing diverges, with specific examples. This is often the most valuable finding for organizations whose communications have been managed by rotating staff or volunteers.
+
+2. **Brand recommendations** — suggestions for what the brand *should* be, including proposed narrative, tone, and style, or a set of options to choose from. This is the beginning of a brand development process, not a finished brand guide, but it gives the organization a concrete starting point.
+
+This layer runs in parallel with benchmarking and strategy development, since it draws on the same Layer 1 content but addresses a distinct question: *Who are we, as expressed through our communications — and is that coherent?*
+
+### Layer 2c: Strategy & Communications Planning
 
 Given the audit findings, benchmarking insights, and organizational context (from Layer 0), the system produces a **communications strategy and quarterly action plan**. This is not a full strategy document — it is a synthesis of what the data suggests the organization should focus on.
 
@@ -143,7 +192,12 @@ The prototype goal is simply to answer:
    * What is the minimum set of intake questions needed to meaningfully shape the audit and strategy?
    * Should intake be conversational (interactive Q&A) or form-based?
 
-7. **Strategy scope**
+7. **Brand audit depth**
+
+   * How much of brand distillation can be automated from content analysis vs requiring human input?
+   * Should brand recommendations be presented as a single proposal or multiple options?
+
+8. **Strategy scope**
 
    * How specific should quarterly plans be? High-level themes only, or down to suggested post cadences and content types?
    * How should the tool handle organizations that lack a clear existing strategy to build on?
