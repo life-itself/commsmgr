@@ -52,6 +52,36 @@ No formal communications strategy in place. General goals:
 - Identify what's not working and why
 - Establish a baseline to build strategy from
 
+## Data Collection Status
+
+| Platform | Status | Items | Content | Metrics | Notes |
+|----------|--------|-------|---------|---------|-------|
+| YouTube | Mostly done | 366 videos | 0 transcripts (re-run needed) | All metrics collected | 2,360 subs, 118k total views. Transcripts temp blocked by YouTube rate limit |
+| Website | Not started | — | — | — | Crawl via trafilatura |
+| Substack (news) | Not started | — | — | — | Public API available |
+| Substack (research) | Not started | — | — | — | Public API available |
+| Substack (praxis) | Not started | — | — | — | Public API available |
+| X/Twitter | Not started | — | — | — | Needs archive export from user |
+| Facebook | Not started | — | — | — | Needs Page Insights export from user |
+| LinkedIn | Not started | — | — | — | No good API; needs manual export |
+| Instagram | Not started | — | — | — | Needs Meta Business Suite export |
+| Bluesky | Not started | — | — | — | Check if account exists |
+
+**Data location:** `lifeitself/data/`
+
+### YouTube Details
+- **Channel:** [@bylifeitself](https://www.youtube.com/@bylifeitself)
+- **Channel ID:** UCmBq3VO9w_MLTKD_CHsYN-Q
+- **Subscribers:** 2,360
+- **Total videos:** 366 (date range: 2016-10-22 to 2026-03-04)
+- **Total views:** 118,741 (avg 324/video)
+- **Total likes:** 2,328
+- **Total comments:** 238
+- **Metrics collected:** Yes — titles, descriptions, publish dates, view/like/comment counts for all 366 videos
+- **Transcripts collected:** 0/366 currently (IP rate-limited by YouTube transcript service; 47 were collected on first pass but overwritten — re-run later to recover)
+- **Top videos by views:** Cory Doctorow on Blockchain (4,049), Dr Jeffery Martin on Awakening (2,745), Un Buda Argentina (1,934), Web3 & Neo-Metallism (1,851), Roberto Unger on Knowledge Economy (1,700)
+- **Next steps:** Re-run transcript collection when IP block lifts. For richer analytics (watch time, demographics), export CSV from YouTube Studio.
+
 ## Additional Context
 - The organization has multiple Substack publications which may reflect the two-brand split they're considering
 - WhatsApp community group exists as a direct engagement channel
